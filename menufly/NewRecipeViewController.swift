@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class NewRecipeViewController: UIViewController {
+class NewRecipeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
    
     var ref: DatabaseReference?
@@ -30,12 +30,39 @@ class NewRecipeViewController: UIViewController {
     
     @IBOutlet weak var recipeIngredientMeasurment: UITextField!
     
+    @IBOutlet weak var measurementPicker: UIPickerView!
+    
+    var measurementArray = ["grms", "kg", "ml", "spoon", "tablespoon", "pinch", "cups", "liter", "pounds", "oz", "gallon", "quater"]
+    
+    var chosenMeasure = 0
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return measurementArray.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return measurementArray[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.recipeIngredientMeasurment.text = self.measurementArray[row]
+        chosenMeasure = row
+        self.measurementPicker.isHidden = true
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        
-    
-        // Do any additional setup after loading the view.
+
+        // so that the load view populates the picker view
+        measurementPicker.delegate = self
+        measurementPicker.dataSource = self
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,18 +70,25 @@ class NewRecipeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        if (textField == recipeIngredientMeasurment) {
+            self.measurementPicker.isHidden = false
+        }
+    }
+    
     
     @IBAction func addIngredient(_ sender: Any) {
         var ingredient = [String: String]()
         ingredient["name"] = recipeIngredient.text
         ingredient["quantity"] = recipeIngredientQuantity.text
-        ingredient["measurement"] = recipeIngredientMeasurment.text
+        
+        
+            recipeIngredientMeasurment.text = measurementArray[chosenMeasure]
+            ingredient["measurement"] = recipeIngredientMeasurment.text
+        
         
         ingredients.append(ingredient as AnyObject)
-    }
-    
-    
-
+        }
     
 
     @IBAction func addRecipe(_ sender: Any) {

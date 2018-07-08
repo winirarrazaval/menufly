@@ -273,26 +273,41 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="e11-CN-VzR">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="e11-CN-VzR">
                                                 <rect key="frame" x="0.0" y="32.5" width="200" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-62-oGZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="27" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sD-62-oGZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="30"/>
                                                         <nil key="textColor"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-cr-Ek0">
-                                                        <rect key="frame" x="29" y="0.0" width="74" height="30"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LbI-cr-Ek0">
+                                                        <rect key="frame" x="67.5" y="0.0" width="65" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="measurement type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEd-dH-lW7">
-                                                        <rect key="frame" x="105" y="0.0" width="95" height="30"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="EJM-bZ-ShF">
+                                                        <rect key="frame" x="134.5" y="0.0" width="65.5" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="measurement type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEd-dH-lW7">
+                                                                <rect key="frame" x="0.0" y="0.0" width="65.5" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="wIo-ii-7Qd" id="zTG-eA-szq"/>
+                                                                </connections>
+                                                            </textField>
+                                                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9S3-sL-eXM">
+                                                                <rect key="frame" x="0.0" y="-281.5" width="65.5" height="0.0"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="wIo-ii-7Qd" id="HOg-Av-6AW"/>
+                                                                    <outlet property="delegate" destination="wIo-ii-7Qd" id="Ntx-jz-kb3"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXk-h0-pgA">
@@ -362,6 +377,7 @@
                         <viewLayoutGuide key="safeArea" id="ryg-h1-hOP"/>
                     </view>
                     <connections>
+                        <outlet property="measurementPicker" destination="9S3-sL-eXM" id="0Jw-fB-90S"/>
                         <outlet property="recipeIngredient" destination="7sD-62-oGZ" id="lsj-fA-L0n"/>
                         <outlet property="recipeIngredientMeasurment" destination="eEd-dH-lW7" id="cfw-Kb-QUP"/>
                         <outlet property="recipeIngredientQuantity" destination="LbI-cr-Ek0" id="gQh-Ge-xwP"/>
