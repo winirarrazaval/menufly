@@ -17,6 +17,7 @@
 		9F18CC8D20EC8E530062EA36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC8C20EC8E530062EA36 /* MainViewController.swift */; };
 		9F18CC8F20ED3F8D0062EA36 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC8E20ED3F8D0062EA36 /* NewRecipeViewController.swift */; };
 		9F18CC9120EEA2410062EA36 /* AllRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC9020EEA2410062EA36 /* AllRecipesViewController.swift */; };
+		9FEA997520F2F91E00FFDD6A /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEA997420F2F91E00FFDD6A /* Recipes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		9F18CC8C20EC8E530062EA36 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9F18CC8E20ED3F8D0062EA36 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
 		9F18CC9020EEA2410062EA36 /* AllRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesViewController.swift; sourceTree = "<group>"; };
+		9FEA997420F2F91E00FFDD6A /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				9F18CC8120EC87E60062EA36 /* LaunchScreen.storyboard */,
 				9F18CC8A20EC87F90062EA36 /* GoogleService-Info.plist */,
 				9F18CC8420EC87E60062EA36 /* Info.plist */,
+				9FEA997420F2F91E00FFDD6A /* Recipes.swift */,
 			);
 			path = menufly;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F18CC8D20EC8E530062EA36 /* MainViewController.swift in Sources */,
+				9FEA997520F2F91E00FFDD6A /* Recipes.swift in Sources */,
 				9F18CC8F20ED3F8D0062EA36 /* NewRecipeViewController.swift in Sources */,
 				9F18CC7B20EC87E40062EA36 /* ViewController.swift in Sources */,
 				9F18CC9120EEA2410062EA36 /* AllRecipesViewController.swift in Sources */,

@@ -26,6 +26,7 @@ class AllRecipesViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
 
         ref = Database.database().reference()
+       
         
          databaseHandle = ref?.child("recipes").observe(.childAdded, with: { (snapshot) in
             print(snapshot.value! )
@@ -38,7 +39,9 @@ class AllRecipesViewController: UIViewController, UITableViewDelegate, UITableVi
             )
             
     }
-            
+
+        
+    }
    
 
     override func didReceiveMemoryWarning() {
