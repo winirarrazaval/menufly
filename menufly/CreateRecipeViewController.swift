@@ -1,18 +1,21 @@
 //
-//  NewRecipeViewController.swift
+//  CreateRecipeViewController.swift
 //  menufly
 //
-//  Created by winifred irarrazaval Oehninger on 7/4/18.
+//  Created by winifred irarrazaval Oehninger on 7/11/18.
 //  Copyright © 2018 winifred irarrazaval Oehninger. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
 import Firebase
+import FirebaseDatabase
 
-class NewRecipeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+   
     
-   //hello
+   
+    
+    
     var ref: DatabaseReference?
     
     var recipe: Dictionary = [String: Any]()
@@ -31,51 +34,98 @@ class NewRecipeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var recipeIngredientMeasurment: UITextField!
     
-    @IBOutlet weak var measurementPicker: UIPickerView!
+   
+    @IBOutlet weak var ingredientsTable: UITableView!
+    
+    
+    var ingredientsList = [String] ()
+    
+    var theIngredientName:String = ""
+    var theIngredientQuantity:String = ""
+    var theIngredientMeasurement:String = ""
+    
     
     var measurementArray = ["grms", "kg", "ml", "spoon", "tablespoon", "pinch", "cups", "liter", "pounds", "oz", "gallon", "quater"]
     
     var chosenMeasure = 0
     
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ingredientsList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default
+            , reuseIdentifier: "ingredientCell")
+        cell.textLabel?.text = ingredientsList[indexPath.row]
+        
+        return cell
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return measurementArray.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return measurementArray[row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.recipeIngredientMeasurment.text = self.measurementArray[row]
         chosenMeasure = row
-        self.measurementPicker.isHidden = true
+
     }
+    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
 
-        // so that the load view populates the picker view
-        measurementPicker.delegate = self
-        measurementPicker.dataSource = self
+        ref = Database.database().reference()
+        createDayPicker()
+        createToolBar()
+        
+        ingredientsTable.layer.masksToBounds = true
+        ingredientsTable.layer.borderColor =  UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
+        ingredientsTable.layer.borderWidth = 2.0
+        
+        
+
 
     }
 
+    func createDayPicker() {
+        let dayPicker = UIPickerView()
+        dayPicker.delegate = self
+        
+        recipeIngredientMeasurment.inputView  = dayPicker
+    }
+    
+    func createToolBar(){
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.dismissKeyboard))
+        
+        toolBar.setItems([doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        recipeIngredientMeasurment.inputAccessoryView = toolBar
+    }
+    
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField){
-        if (textField == recipeIngredientMeasurment) {
-            self.measurementPicker.isHidden = false
-        }
-    }
     
     
     @IBAction func addIngredient(_ sender: Any) {
@@ -84,14 +134,20 @@ class NewRecipeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         ingredient["quantity"] = recipeIngredientQuantity.text
         
         
-            recipeIngredientMeasurment.text = measurementArray[chosenMeasure]
-            ingredient["measurement"] = recipeIngredientMeasurment.text
+        recipeIngredientMeasurment.text = measurementArray[chosenMeasure]
+        ingredient["measurement"] = recipeIngredientMeasurment.text
         
+        theIngredientName = recipeIngredient.text!
+        theIngredientQuantity = recipeIngredientQuantity.text!
+        theIngredientMeasurement = recipeIngredientMeasurment.text!
         
+        ingredientsList.append(theIngredientQuantity + " " + theIngredientMeasurement + " " + theIngredientName)
+        print(ingredientsList)
         ingredients.append(ingredient as AnyObject)
-        }
+        ingredientsTable.reloadData()
+    }
     
-
+    
     @IBAction func addRecipe(_ sender: Any) {
         let userUID = Auth.auth().currentUser?.uid
         
@@ -100,19 +156,20 @@ class NewRecipeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                      "method" : recipeMethod.text as Any,
                      "ingredients" : ingredients as Any,
                      "userUID" : userUID as Any
-            ]
+        ]
         
         
         
         ref?.child("recipes").childByAutoId().setValue(recipe)
-       
-        //ref?.child("recipes").child().setValue(recipeName.text)
         
-    
-            presentingViewController?.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        //presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-   
+ 
+    
+    
+
     /*
     // MARK: - Navigation
 
