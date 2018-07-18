@@ -11,8 +11,6 @@
 		9F08560B20F6B70B009F4FD5 /* AllTheRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */; };
 		9F08561120F6DA43009F4FD5 /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */; };
 		9F08561320F72107009F4FD5 /* TheRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08561220F72107009F4FD5 /* TheRecipeViewController.swift */; };
-		9F08CB0120F969D4004648C0 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08CB0020F969D4004648C0 /* CalendarViewController.swift */; };
-		9F08CB0320F96AEA004648C0 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08CB0220F96AEA004648C0 /* CalendarCollectionViewCell.swift */; };
 		9F18CC7920EC87E40062EA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7820EC87E40062EA36 /* AppDelegate.swift */; };
 		9F18CC7B20EC87E40062EA36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7A20EC87E40062EA36 /* ViewController.swift */; };
 		9F18CC7E20EC87E40062EA36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F18CC7C20EC87E40062EA36 /* Main.storyboard */; };
@@ -35,8 +33,6 @@
 		9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTheRecipesViewController.swift; sourceTree = "<group>"; };
 		9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
 		9F08561220F72107009F4FD5 /* TheRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRecipeViewController.swift; sourceTree = "<group>"; };
-		9F08CB0020F969D4004648C0 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		9F08CB0220F96AEA004648C0 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		9F18CC7520EC87E40062EA36 /* menufly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menufly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F18CC7820EC87E40062EA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F18CC7A20EC87E40062EA36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,8 +108,6 @@
 				9F18CC8420EC87E60062EA36 /* Info.plist */,
 				9FEA997620F3D1C000FFDD6A /* Recipes.swift */,
 				9F448B1420F7F68A00E9CA90 /* user.swift */,
-				9F08CB0020F969D4004648C0 /* CalendarViewController.swift */,
-				9F08CB0220F96AEA004648C0 /* CalendarCollectionViewCell.swift */,
 				9FE5BADC20FD53FB00274EA3 /* OneRecipeViewController.swift */,
 			);
 			path = menufly;
@@ -307,10 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F08CB0120F969D4004648C0 /* CalendarViewController.swift in Sources */,
 				9FE5BADD20FD53FB00274EA3 /* OneRecipeViewController.swift in Sources */,
 				9F448B1520F7F68A00E9CA90 /* user.swift in Sources */,
-				9F08CB0320F96AEA004648C0 /* CalendarCollectionViewCell.swift in Sources */,
 				9F08561320F72107009F4FD5 /* TheRecipeViewController.swift in Sources */,
 				9F08560B20F6B70B009F4FD5 /* AllTheRecipesViewController.swift in Sources */,
 				9F18CC8D20EC8E530062EA36 /* MainViewController.swift in Sources */,
