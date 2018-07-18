@@ -103,7 +103,7 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
-        performSegue(withIdentifier: "test", sender: self)
+        performSegue(withIdentifier: "recipeShow", sender: self)
     }
 
     
