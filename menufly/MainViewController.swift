@@ -8,10 +8,13 @@
 
 import UIKit
 import FirebaseDatabase
+import Firebase
 
 class MainViewController: UIViewController {
     
-       var ref:DatabaseReference?
+    var ref:DatabaseReference?
+    
+    var currentUser = Auth.auth().currentUser?.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +22,6 @@ class MainViewController: UIViewController {
         ref = Database.database().reference()
         
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,6 +29,27 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func handleLogOut(_ sender: Any) {
+    
+        do {
+            try Auth.auth().signOut()
+          self.performSegue(withIdentifier: "unwindToViewController1", sender: self)
+            
+        } catch let signOutErr {
+            print("Failed to sign out:", signOutErr)
+        }
+       
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "myRecipes" {
+            let myRecipesController = segue.destination as! AllTheRecipesViewController
+            myRecipesController.userUid = self.currentUser
+            
+        }
+    }
+    
+
 
     /*
     // MARK: - Navigation

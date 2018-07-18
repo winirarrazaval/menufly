@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		978C2AC1F16916C109A1B665 /* Pods_menufly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00339691A7C4847B90E9A00A /* Pods_menufly.framework */; };
+		9F08560B20F6B70B009F4FD5 /* AllTheRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */; };
+		9F08561120F6DA43009F4FD5 /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */; };
+		9F08561320F72107009F4FD5 /* TheRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08561220F72107009F4FD5 /* TheRecipeViewController.swift */; };
 		9F18CC7920EC87E40062EA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7820EC87E40062EA36 /* AppDelegate.swift */; };
 		9F18CC7B20EC87E40062EA36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7A20EC87E40062EA36 /* ViewController.swift */; };
 		9F18CC7E20EC87E40062EA36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F18CC7C20EC87E40062EA36 /* Main.storyboard */; };
@@ -15,15 +18,21 @@
 		9F18CC8320EC87E60062EA36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F18CC8120EC87E60062EA36 /* LaunchScreen.storyboard */; };
 		9F18CC8B20EC87F90062EA36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F18CC8A20EC87F90062EA36 /* GoogleService-Info.plist */; };
 		9F18CC8D20EC8E530062EA36 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC8C20EC8E530062EA36 /* MainViewController.swift */; };
-		9F18CC8F20ED3F8D0062EA36 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC8E20ED3F8D0062EA36 /* NewRecipeViewController.swift */; };
-		9F18CC9120EEA2410062EA36 /* AllRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC9020EEA2410062EA36 /* AllRecipesViewController.swift */; };
-		9FEA997520F2F91E00FFDD6A /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEA997420F2F91E00FFDD6A /* Recipes.swift */; };
+		9F448B0F20F7D39700E9CA90 /* FollowUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F448B0E20F7D39700E9CA90 /* FollowUsersTableViewController.swift */; };
+		9F448B1320F7EB8100E9CA90 /* MyFriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F448B1220F7EB8100E9CA90 /* MyFriendsTableViewController.swift */; };
+		9F448B1520F7F68A00E9CA90 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F448B1420F7F68A00E9CA90 /* user.swift */; };
+		9F448B1720F81C6E00E9CA90 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F448B1620F81C6E00E9CA90 /* UserProfileViewController.swift */; };
+		9FE5BADD20FD53FB00274EA3 /* OneRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE5BADC20FD53FB00274EA3 /* OneRecipeViewController.swift */; };
+		9FEA997720F3D1C000FFDD6A /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEA997620F3D1C000FFDD6A /* Recipes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00339691A7C4847B90E9A00A /* Pods_menufly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_menufly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E73A5E948E846DE2C61849 /* Pods-menufly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menufly.release.xcconfig"; path = "Pods/Target Support Files/Pods-menufly/Pods-menufly.release.xcconfig"; sourceTree = "<group>"; };
 		5F96175EDF4CB1C066E16D5D /* Pods-menufly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menufly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menufly/Pods-menufly.debug.xcconfig"; sourceTree = "<group>"; };
+		9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTheRecipesViewController.swift; sourceTree = "<group>"; };
+		9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
+		9F08561220F72107009F4FD5 /* TheRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheRecipeViewController.swift; sourceTree = "<group>"; };
 		9F18CC7520EC87E40062EA36 /* menufly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menufly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F18CC7820EC87E40062EA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F18CC7A20EC87E40062EA36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,9 +42,12 @@
 		9F18CC8420EC87E60062EA36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F18CC8A20EC87F90062EA36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F18CC8C20EC8E530062EA36 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9F18CC8E20ED3F8D0062EA36 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
-		9F18CC9020EEA2410062EA36 /* AllRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecipesViewController.swift; sourceTree = "<group>"; };
-		9FEA997420F2F91E00FFDD6A /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		9F448B0E20F7D39700E9CA90 /* FollowUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUsersTableViewController.swift; sourceTree = "<group>"; };
+		9F448B1220F7EB8100E9CA90 /* MyFriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsTableViewController.swift; sourceTree = "<group>"; };
+		9F448B1420F7F68A00E9CA90 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		9F448B1620F81C6E00E9CA90 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		9FE5BADC20FD53FB00274EA3 /* OneRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRecipeViewController.swift; sourceTree = "<group>"; };
+		9FEA997620F3D1C000FFDD6A /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +95,20 @@
 				9F18CC7820EC87E40062EA36 /* AppDelegate.swift */,
 				9F18CC7A20EC87E40062EA36 /* ViewController.swift */,
 				9F18CC8C20EC8E530062EA36 /* MainViewController.swift */,
-				9F18CC9020EEA2410062EA36 /* AllRecipesViewController.swift */,
-				9F18CC8E20ED3F8D0062EA36 /* NewRecipeViewController.swift */,
+				9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */,
+				9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */,
+				9F08561220F72107009F4FD5 /* TheRecipeViewController.swift */,
+				9F448B1220F7EB8100E9CA90 /* MyFriendsTableViewController.swift */,
+				9F448B0E20F7D39700E9CA90 /* FollowUsersTableViewController.swift */,
+				9F448B1620F81C6E00E9CA90 /* UserProfileViewController.swift */,
 				9F18CC7C20EC87E40062EA36 /* Main.storyboard */,
 				9F18CC7F20EC87E60062EA36 /* Assets.xcassets */,
 				9F18CC8120EC87E60062EA36 /* LaunchScreen.storyboard */,
 				9F18CC8A20EC87F90062EA36 /* GoogleService-Info.plist */,
 				9F18CC8420EC87E60062EA36 /* Info.plist */,
-				9FEA997420F2F91E00FFDD6A /* Recipes.swift */,
+				9FEA997620F3D1C000FFDD6A /* Recipes.swift */,
+				9F448B1420F7F68A00E9CA90 /* user.swift */,
+				9FE5BADC20FD53FB00274EA3 /* OneRecipeViewController.swift */,
 			);
 			path = menufly;
 			sourceTree = "<group>";
@@ -115,6 +133,7 @@
 				9F18CC7220EC87E40062EA36 /* Frameworks */,
 				9F18CC7320EC87E40062EA36 /* Resources */,
 				9D4871F3F16567266736E40A /* [CP] Embed Pods Frameworks */,
+				54D979DB6E51312B86E131D3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,6 +192,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		54D979DB6E51312B86E131D3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-menufly/Pods-menufly-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterShareExtensionUIResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-menufly/Pods-menufly-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9D4871F3F16567266736E40A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,13 +231,43 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-menufly/Pods-menufly-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -220,12 +301,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE5BADD20FD53FB00274EA3 /* OneRecipeViewController.swift in Sources */,
+				9F448B1520F7F68A00E9CA90 /* user.swift in Sources */,
+				9F08561320F72107009F4FD5 /* TheRecipeViewController.swift in Sources */,
+				9F08560B20F6B70B009F4FD5 /* AllTheRecipesViewController.swift in Sources */,
 				9F18CC8D20EC8E530062EA36 /* MainViewController.swift in Sources */,
-				9FEA997520F2F91E00FFDD6A /* Recipes.swift in Sources */,
-				9F18CC8F20ED3F8D0062EA36 /* NewRecipeViewController.swift in Sources */,
+				9F448B0F20F7D39700E9CA90 /* FollowUsersTableViewController.swift in Sources */,
+				9FEA997720F3D1C000FFDD6A /* Recipes.swift in Sources */,
+				9F08561120F6DA43009F4FD5 /* CreateRecipeViewController.swift in Sources */,
 				9F18CC7B20EC87E40062EA36 /* ViewController.swift in Sources */,
-				9F18CC9120EEA2410062EA36 /* AllRecipesViewController.swift in Sources */,
 				9F18CC7920EC87E40062EA36 /* AppDelegate.swift in Sources */,
+				9F448B1720F81C6E00E9CA90 /* UserProfileViewController.swift in Sources */,
+				9F448B1320F7EB8100E9CA90 /* MyFriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +458,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6FFR68Y67Q;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = menufly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,7 +479,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6FFR68Y67Q;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = menufly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
