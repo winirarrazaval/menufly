@@ -32,7 +32,7 @@ class MyFriendsTableViewController: UITableViewController {
             print("data returnd")
             print(snapshot)
             
-            let snapshotUid = snapshot.key as? String
+            let snapshotUid = snapshot.key
             let snapshot = snapshot.value as? NSDictionary
             
             //add the users to the array
@@ -84,7 +84,6 @@ class MyFriendsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         theIndex = myIndex
-        print(uidList[theIndex])
         performSegue(withIdentifier: "myFriendsRecipes", sender: self)
     }
     

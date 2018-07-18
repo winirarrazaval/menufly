@@ -27,7 +27,7 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ref.child("users").child(self.loggedInUser?.uid as! String).observe(.value) { (snapshot) in
+        ref.child("users").child(self.loggedInUser!.uid ).observe(.value) { (snapshot) in
             self.loggedInUserData = snapshot.value as! NSDictionary
             self.loggedInUserData.setValue(self.loggedInUser?.uid, forKey: "uid")
         }
@@ -38,7 +38,7 @@ class UserProfileViewController: UIViewController {
             self.otherUser.setValue(uid, forKey: "uid")
         }
         
-        ref.child("following").child(self.loggedInUser?.uid as! String).child(self.otherUser["uid"] as! String).observe(.value) { (snapshot) in
+        ref.child("following").child(self.loggedInUser!.uid ).child(self.otherUser["uid"] as! String).observe(.value) { (snapshot) in
             if snapshot.exists() {
                 self.followButton.setTitle("Unfollow", for: .normal)
             } else {

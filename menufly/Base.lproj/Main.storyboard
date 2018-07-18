@@ -187,7 +187,7 @@
                                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="9tU-iq-9kM" kind="show" id="onA-iA-AwU"/>
+                                                    <segue destination="9tU-iq-9kM" kind="show" identifier="myFriends" id="onA-iA-AwU"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -212,8 +212,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="J90-EC-J0T" kind="show" identifier="" id="ary-Vd-Jif"/>
-                        <segue destination="9tU-iq-9kM" kind="show" id="wpP-bc-Hka"/>
+                        <segue destination="J90-EC-J0T" kind="show" identifier="toMyRecipes" id="ary-Vd-Jif"/>
+                        <segue destination="9tU-iq-9kM" kind="show" identifier="goToMyFriends" id="wpP-bc-Hka"/>
                         <segue destination="DNq-LM-XOd" kind="unwind" identifier="unwindToViewController" unwindAction="prepareForUnwindWithSegue:" id="LMR-mA-6A6"/>
                     </connections>
                 </viewController>
@@ -248,13 +248,13 @@
                     <navigationItem key="navigationItem" title="Friends" id="qZI-dC-sYl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UIn-pl-lvn">
                             <connections>
-                                <segue destination="Qav-a9-lkW" kind="show" id="050-bH-gCp"/>
+                                <segue destination="Qav-a9-lkW" kind="show" identifier="goToFindFriends" id="050-bH-gCp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="followingTableView" destination="ZsZ-rC-wLh" id="UTo-ax-0JZ"/>
-                        <segue destination="Qav-a9-lkW" kind="show" id="vep-Tu-NRU"/>
+                        <segue destination="Qav-a9-lkW" kind="show" identifier="findFriends" id="vep-Tu-NRU"/>
                         <segue destination="J90-EC-J0T" kind="show" identifier="myFriendsRecipes" id="iaR-gi-62T"/>
                     </connections>
                 </tableViewController>
@@ -359,7 +359,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="n4q-Oi-8z4">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myRecipe" id="n4q-Oi-8z4">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n4q-Oi-8z4" id="Nuz-BN-tYr">
@@ -382,14 +382,14 @@
                     <navigationItem key="navigationItem" title="My Recipes" id="4AE-2s-VVy">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="6Yo-Qn-Z9b">
                             <connections>
-                                <segue destination="xpJ-Sk-eez" kind="show" id="ldR-mX-uWa"/>
+                                <segue destination="xpJ-Sk-eez" kind="show" identifier="goToMyRecipes" id="ldR-mX-uWa"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="UHN-B5-Xsv" id="S6k-JQ-0ed"/>
-                        <segue destination="xpJ-Sk-eez" kind="show" id="Ab3-e4-ymb"/>
-                        <segue destination="Q4L-UR-14A" kind="show" identifier="test" id="htu-he-UL9"/>
+                        <segue destination="xpJ-Sk-eez" kind="show" identifier="makeNewRecipes" id="Ab3-e4-ymb"/>
+                        <segue destination="Q4L-UR-14A" kind="show" identifier="recipeShow" id="htu-he-UL9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZh-f9-7JG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -644,83 +644,6 @@
             </objects>
             <point key="canvasLocation" x="2625" y="964.43661971830988"/>
         </scene>
-        <!--The Recipe View Controller-->
-        <scene sceneID="HSt-fA-BVN">
-            <objects>
-                <viewController id="PQ3-jF-dDr" customClass="TheRecipeViewController" customModule="menufly" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vWH-hK-N6k">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2Nq-XI-5LQ">
-                                <rect key="frame" x="20" y="62" width="280" height="506"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-ge-4Tr">
-                                        <rect key="frame" x="0.0" y="0.0" width="166" height="35"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <color key="textColor" red="0.37926276131600961" green="0.47326106923096445" blue="0.24977801332488517" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="7cP-hg-sdg">
-                                        <rect key="frame" x="0.0" y="35" width="240" height="471"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zho-ML-VhD">
-                                                <rect key="frame" x="0.0" y="0.0" width="64" height="157"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="kLd-eh-HRQ">
-                                                <rect key="frame" x="0.0" y="157" width="240" height="157"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEW-CU-WCR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="86" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L9m-2D-9IW">
-                                                        <rect key="frame" x="0.0" y="20.5" width="240" height="136.5"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="PQ3-jF-dDr" id="IdJ-tV-ShX"/>
-                                                            <outlet property="delegate" destination="PQ3-jF-dDr" id="BgK-2h-MlI"/>
-                                                        </connections>
-                                                    </tableView>
-                                                </subviews>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preparation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swu-fy-EI1">
-                                                <rect key="frame" x="0.0" y="314" width="88.5" height="157"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="2Nq-XI-5LQ" secondAttribute="trailing" constant="20" id="0At-Go-bRG"/>
-                            <constraint firstItem="2Nq-XI-5LQ" firstAttribute="top" secondItem="Oq8-Id-jGt" secondAttribute="top" constant="42" id="RSA-rl-u62"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="2Nq-XI-5LQ" secondAttribute="bottom" id="dUd-PV-Grl"/>
-                            <constraint firstItem="2Nq-XI-5LQ" firstAttribute="leading" secondItem="Oq8-Id-jGt" secondAttribute="leading" constant="20" id="ycy-DY-6Xc"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Oq8-Id-jGt"/>
-                    </view>
-                    <connections>
-                        <outlet property="ingredients" destination="QEW-CU-WCR" id="mGT-N5-tC4"/>
-                        <outlet property="ingredientsTable" destination="L9m-2D-9IW" id="rQg-0Z-Fgz"/>
-                        <outlet property="portions" destination="zho-ML-VhD" id="Li1-SE-XmY"/>
-                        <outlet property="preparation" destination="Swu-fy-EI1" id="lPL-s8-ZXG"/>
-                        <outlet property="recipeName" destination="FQS-ge-4Tr" id="GcK-w3-L76"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="68V-Ot-Eay" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3390" y="936.97183098591552"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A30-LE-A1z">
             <objects>
@@ -742,8 +665,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ab3-e4-ymb"/>
-        <segue reference="pX2-Kz-2S3"/>
+        <segue reference="iaR-gi-62T"/>
         <segue reference="050-bH-gCp"/>
-        <segue reference="onA-iA-AwU"/>
+        <segue reference="wpP-bc-Hka"/>
     </inferredMetricsTieBreakers>
 </document>
