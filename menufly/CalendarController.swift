@@ -12,6 +12,8 @@ import JTAppleCalendar
 class CalendarController: UIViewController {
     
     @IBOutlet weak var myCalendar: JTAppleCalendarView!
+    @IBOutlet weak var month: UILabel!
+    @IBOutlet weak var year: UILabel!
     
     let formatter = DateFormatter()
 
@@ -25,6 +27,13 @@ class CalendarController: UIViewController {
     func setUpCalendarView(){
         myCalendar.minimumLineSpacing = 0
         myCalendar.minimumInteritemSpacing = 0
+        
+        myCalendar.visibleDates {(visibleDates) in
+          self.setupViewsFromCalendar(from: visibleDates)
+        }
+        
+        myCalendar.scrollToDate(Date(), animateScroll: false)
+        myCalendar.selectDates( [Date()] )
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,6 +41,15 @@ class CalendarController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupViewsFromCalendar(from visibleDates: DateSegmentInfo){
+        guard let date = visibleDates.monthDates.first?.date else {return}
+        
+        self.formatter.dateFormat = "yyyy"
+        self.year.text = self.formatter.string(from: date)
+        
+        self.formatter.dateFormat = "MMMM"
+        self.month.text = self.formatter.string(from: date).uppercased()
+    }
 
 }
 
@@ -90,7 +108,22 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let validCell = cell as? CalendarCell else {return}
+        print(validCell.dayLabel.text)
         validCell.selectedView.isHidden = true
         validCell.dayLabel.textColor = UIColor.white
     }
+    
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+       setupViewsFromCalendar(from: visibleDates)
+    }
+    
+    func calendar(_ calendar: JTAppleCalendarView, headerViewForDateRange range: (start: Date, end: Date), at indexPath: IndexPath) -> JTAppleCollectionReusableView {
+        let header = calendar.dequeueReusableJTAppleSupplementaryView(withReuseIdentifier: "header", for: indexPath) as! CalendarHeader
+        return header
+    }
+    
+    func calendarSizeForMonths(_ calendar: JTAppleCalendarView?) -> MonthSize? {
+        return MonthSize(defaultSize: 50)
+    }
+    
 }
