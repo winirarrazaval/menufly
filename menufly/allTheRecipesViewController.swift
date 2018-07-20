@@ -21,6 +21,8 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     
 
     var userUid:String!
+    var userName:String!
+    var selectedDate:String!
    
     var databaseHandle:DatabaseHandle?
     var ref:DatabaseReference?
@@ -34,6 +36,9 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        navigationItem.title = userName
+    
         
         ref = Database.database().reference()
         fetchRecipes()
@@ -51,6 +56,7 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
                 if  (self.userUid?.isEqual(recipeUserUid))! {
                     if  ((snapshot.value as? [String: AnyObject]) != nil){
                         let recipe = Recipes()
+                        recipe.uid = snapshot.key as String
                         recipe.name = snapshot.childSnapshot(forPath: "name").value as? String
                         recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any
                         recipe.method = snapshot.childSnapshot(forPath: "method").value as? String
@@ -86,7 +92,8 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         //cell?.textLabel?.text = allRecipes[indexPath.row]
         //return cell!
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
-        cell.textLabel?.text = theRecipes[indexPath.row].name
+        cell.textLabel?.text = theRecipes[indexPath.row].name?.uppercased()
+        cell.textLabel?.textColor = UIColor.darkGray
         return cell
         
         
@@ -99,6 +106,13 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "recipeShow" {
+            let recipeController = segue.destination as! OneRecipeViewController
+            recipeController.selectedDate = self.selectedDate
+        }
+    }
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

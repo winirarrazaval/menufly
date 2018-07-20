@@ -613,7 +613,7 @@
                                             <color key="titleColor" red="0.1650213224" green="0.32421440740000002" blue="0.601007297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="J90-EC-J0T" kind="show" identifier="chooseRecipeFromCalendar" id="p13-gR-ZnU"/>
+                                            <action selector="addRecipe:" destination="0Yw-wx-CZg" eventType="touchUpInside" id="v21-gO-vJA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -776,11 +776,12 @@
                         <outlet property="myCalendar" destination="jpL-w7-7j2" id="FaR-VQ-JcW"/>
                         <outlet property="recipesTable" destination="sbu-nB-aSu" id="ymS-uw-PG2"/>
                         <outlet property="year" destination="4bA-mg-Qr4" id="mvk-jw-c0O"/>
+                        <segue destination="J90-EC-J0T" kind="show" identifier="chooseRecipeFromCalendar" id="NVf-iX-ua1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DW2-pc-N9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655.625" y="951.76056338028172"/>
+            <point key="canvasLocation" x="1877" y="1111"/>
         </scene>
         <!--One Recipe View Controller-->
         <scene sceneID="asa-9x-KGl">
@@ -958,7 +959,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="qpB-tP-Qkc"/>
         <segue reference="Ab3-e4-ymb"/>
-        <segue reference="p13-gR-ZnU"/>
+        <segue reference="NVf-iX-ua1"/>
         <segue reference="050-bH-gCp"/>
         <segue reference="wpP-bc-Hka"/>
     </inferredMetricsTieBreakers>

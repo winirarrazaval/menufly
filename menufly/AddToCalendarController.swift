@@ -14,6 +14,8 @@ class AddToCalendarController: UIViewController {
     
     var recipeUid: String!
     var recipeName: String!
+    var recipeIngredients: Any!
+    var selectedDate:String!
 
     @IBOutlet weak var recipe: UILabel!
     
@@ -48,22 +50,27 @@ class AddToCalendarController: UIViewController {
         formatter.dateFormat = "yyyy MM dd"
     
         let calendarUserRef = "calendarByUser/\(self.loggedInUser!.uid )/\(self.recipeUid)"
-        let calendarRecipeRef = "calendarByRecipe/" + (self.recipeUid) + "/" + (self.loggedInUser!.uid )
+        let calendarUserDateRef = "calendarByDate/" + (self.loggedInUser!.uid) + "/" + (self.selectedDate) + "/" +  (self.recipeUid)
+        
+        print(self.recipeIngredients)
         
         
-        let calendarUserData = [ "date": formatter.string(from: date) ,
-                                  "recipeName": self.recipeName]
-        let calendarRecipeData = [ "date": formatter.string(from: date) ,
-                                  "email": "" ]
-            let childUpdates = [ calendarUserRef: calendarUserData,
-                                 calendarRecipeRef: calendarRecipeData]
+        let calendarUserData = [ "date": selectedDate ,
+                                  "recipeName": self.recipeName,
+                                  "ingredients" : self.recipeIngredients]
+        let calendarByDateData = [ "recipeName": self.recipeName ,
+                                  "recipeUid": self.recipeUid,
+                                  "ingredients": self.recipeIngredients]
+        let childUpdates = [ calendarUserRef: calendarUserData as Any,
+                                 calendarUserDateRef: calendarByDateData]
             
             ref.updateChildValues(childUpdates)
         
          func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "showCalendar" {
                 let calendarController = segue.destination as! CalendarController
-                    calendarController.startDate = Date()
+                let formatter = DateFormatter()
+                calendarController.startDate = formatter.date(from: self.selectedDate)!
             }
         }
         

@@ -17,6 +17,8 @@ class OneRecipeViewController: UIViewController {
     
     @IBOutlet weak var recipePreparation: UITextView!
     
+    var selectedDate:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +43,8 @@ class OneRecipeViewController: UIViewController {
             let addToCalendarController = segue.destination as! AddToCalendarController
             addToCalendarController.recipeUid = theRecipes[myIndex].uid
             addToCalendarController.recipeName = theRecipes[myIndex].name
+            addToCalendarController.recipeIngredients = theRecipes[myIndex].ingredients
+            addToCalendarController.selectedDate = self.selectedDate
     }
     
     }

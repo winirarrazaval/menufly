@@ -18,6 +18,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var month: UILabel!
     @IBOutlet weak var year: UILabel!
     
+    
     @IBOutlet weak var recipesTable: UITableView!
     
     
@@ -30,6 +31,9 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var startDate = Date()
     
+    var selectedDate:String!
+    
+    
     let formatter = DateFormatter()
 
     override func viewDidLoad() {
@@ -41,29 +45,8 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         recipesTable.delegate = self
         recipesTable.dataSource = self
         
-        fetchRecipes()
-        
-//        //get all the recipes for a date
-//        databaseRef.child("calendarByUser").child(self.currentUserUid! ).queryOrdered(byChild: "recipeName").observe(.childAdded, with: { (snapshot) in
-//            print("data returnd")
-//            print(snapshot)
-//
-//            let recipeUid = snapshot.key
-//            let snapshot = snapshot.value as? NSDictionary
-//
-//            //add the users to the array
-//        //    self.listRecipes.append(snapshot)
-//            self.uidList.append(recipeUid)
-//
-//            print(self.listRecipes.count)
-////
-//
-//                        self.recipesTable.insertRows(at: [IndexPath(row:self.listRecipes.count-1,section:0)], with: UITableViewRowAnimation.automatic)
-//            
-//        }) { (error) in
-//            print(error.localizedDescription)
-//        }
-        
+   //     fetchRecipes()
+    
         
     }
     
@@ -96,40 +79,43 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         self.month.text = self.formatter.string(from: date).uppercased()
     }
     
+    
     func fetchRecipes(){
-           databaseRef.child("calendarByUser").child(self.currentUserUid! ).queryOrdered(byChild: "recipeName").observe(.childAdded, with: { (snapshot) in
+     
+
+        databaseRef.child("calendarByDate").child(self.currentUserUid! ).child(selectedDate).queryOrdered(byChild: "recipeName").observe(.childAdded, with: { (snapshot) in
             if snapshot.childSnapshot(forPath: "userUID").value != nil {
-             //   let recipeUserUid = snapshot.childSnapshot(forPath: "userUID").value
-            //    if  (self.userUid?.isEqual(recipeUserUid))! {
-                    if  ((snapshot.value as? [String: AnyObject]) != nil){
-                        let recipe = Recipes()
-                        recipe.uid = snapshot.key as String
-                        recipe.name = snapshot.childSnapshot(forPath: "recipeName").value as? String
-                        //recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any
-                        //recipe.method = snapshot.childSnapshot(forPath: "method").value as? String
-                        //recipe.portions = snapshot.childSnapshot(forPath: "portions").value as? String
-                        
-                        self.listRecipes.append(recipe)
-                        self.uidList.append(snapshot.key as String)
-                        
-                        DispatchQueue.global(qos: .background).async {
-                            // Background Thread
-                            DispatchQueue.main.async {
-                                // Run UI Updates or call completion block
-                                self.recipesTable.reloadData()
-                                
-                                let indexPaths = [NSIndexPath]()
-                                
-                                self.recipesTable.insertRows(at: indexPaths as [IndexPath], with: .none)
-                                //    self.tableView.scrollToRow(at: indexPaths.last as! IndexPath, at: .bottom, animated: true)
-                            }
+                //   let recipeUserUid = snapshot.childSnapshot(forPath: "userUID").value
+                //    if  (self.userUid?.isEqual(recipeUserUid))! {
+                if  ((snapshot.value as? [String: AnyObject]) != nil){
+                    let recipe = Recipes()
+                    recipe.uid = snapshot.key as String
+                    recipe.name = snapshot.childSnapshot(forPath: "recipeName").value as? String
+                    //recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any
+                    //recipe.method = snapshot.childSnapshot(forPath: "method").value as? String
+                    //recipe.portions = snapshot.childSnapshot(forPath: "portions").value as? String
+                    
+                    self.listRecipes.append(recipe)
+                    self.uidList.append(snapshot.key as String)
+                    
+                    DispatchQueue.global(qos: .background).async {
+                        // Background Thread
+                        DispatchQueue.main.async {
+                            // Run UI Updates or call completion block
+                            self.recipesTable.reloadData()
+                            
+                            let indexPaths = [NSIndexPath]()
+                            
+                            self.recipesTable.insertRows(at: indexPaths as [IndexPath], with: .none)
+                            //    self.tableView.scrollToRow(at: indexPaths.last as! IndexPath, at: .bottom, animated: true)
                         }
                     }
                 }
+            }
         })
     }
     
-    
+   
     
     
 
@@ -174,6 +160,13 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
             recipesTable.reloadData()
         }
     }
+    
+    
+    @IBAction func addRecipe(_ sender: Any) {
+      self.performSegue(withIdentifier: "chooseRecipeFromCalendar", sender: self)
+        
+    }
+    
     
 }
 
@@ -227,6 +220,19 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
         guard let validCell = cell as? CalendarCell else {return}
         validCell.selectedView.isHidden = false
         validCell.dayLabel.textColor = UIColor.darkGray
+        
+        formatter.dateFormat = "yyyy MM dd"
+        
+        selectedDate = formatter.string(from: cellState.date)
+        
+        listRecipes = []
+        uidList = []
+        
+        fetchRecipes()
+        
+        recipesTable.reloadData()
+        
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -234,6 +240,8 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
         print(cellState)
         validCell.selectedView.isHidden = true
         validCell.dayLabel.textColor = UIColor.white
+        
+        
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
@@ -251,13 +259,13 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
     
     
     
-    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "chooseRecipeFromCalendar" {
-        let myRecipesController = segue.destination as! AllTheRecipesViewController
-        myRecipesController.userUid = self.currentUserUid
-        myRecipesController.userName = "My recipes"
-    }
+        if segue.identifier == "chooseRecipeFromCalendar" {
+            let myRecipesController = segue.destination as! AllTheRecipesViewController
+            myRecipesController.userUid = self.currentUserUid
+            myRecipesController.userName = "My recipes"
+            myRecipesController.selectedDate = self.selectedDate
+        }
     }
     
 }
