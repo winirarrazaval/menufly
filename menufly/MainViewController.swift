@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     var ref:DatabaseReference?
     
     var currentUser = Auth.auth().currentUser?.uid
+    var currentUserName = Auth.auth().currentUser?.email
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "myRecipes" {
             let myRecipesController = segue.destination as! AllTheRecipesViewController
             myRecipesController.userUid = self.currentUser
+            myRecipesController.userName = "My recipes"
             
         }
     }

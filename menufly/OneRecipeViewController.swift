@@ -22,7 +22,8 @@ class OneRecipeViewController: UIViewController {
         
         let myRecipe = theRecipes[myIndex]
         
-        recipeName.text = myRecipe.name
+        recipeName.text = myRecipe.name?.uppercased()
+    
         recipePortions.text = myRecipe.portions! + " persons"
         
         recipePreparation.text = myRecipe.method
@@ -35,7 +36,14 @@ class OneRecipeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addToCalendar" {
+            let addToCalendarController = segue.destination as! AddToCalendarController
+            addToCalendarController.recipeUid = theRecipes[myIndex].uid
+            addToCalendarController.recipeName = theRecipes[myIndex].name
+    }
+    
+    }
     /*
     // MARK: - Navigation
 

@@ -76,7 +76,9 @@ class MyFriendsTableViewController: UITableViewController {
         print(self.listFollowing[indexPath.row]!)
         
         cell.textLabel?.text = self.listFollowing[indexPath.row]?["email"] as? String
+        cell.textLabel?.textColor = UIColor.darkGray
         cell.detailTextLabel?.text = "@"+(self.listFollowing[indexPath.row]?["name"] as? String)!
+        cell.detailTextLabel?.textColor = UIColor.darkGray
         
         return cell
     }
@@ -91,6 +93,7 @@ class MyFriendsTableViewController: UITableViewController {
         if segue.identifier == "myFriendsRecipes" {
             let myRecipesController = segue.destination as! AllTheRecipesViewController
             myRecipesController.userUid = self.uidList[theIndex]
+            myRecipesController.userName = self.listFollowing[theIndex]!["email"] as! String
         }
     }
 }

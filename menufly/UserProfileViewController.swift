@@ -41,12 +41,15 @@ class UserProfileViewController: UIViewController {
         ref.child("following").child(self.loggedInUser!.uid ).child(self.otherUser["uid"] as! String).observe(.value) { (snapshot) in
             if snapshot.exists() {
                 self.followButton.setTitle("Unfollow", for: .normal)
+                self.followButton.tintColor = UIColor.red
             } else {
                 self.followButton.setTitle("Follow", for: .normal)
+                self.followButton.tintColor = UIColor.darkGray
             }
         }
         
         self.name.text = self.otherUser["email"] as? String
+        self.name.textColor = UIColor.darkGray
         
     }
 

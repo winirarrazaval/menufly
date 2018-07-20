@@ -111,7 +111,9 @@ class FollowUsersTableViewController: UITableViewController, UISearchResultsUpda
         }
         
         cell.textLabel?.text = user["email"] as? String
+        cell.textLabel?.textColor = UIColor.darkGray
         cell.detailTextLabel?.text = user["name"] as? String
+        cell.detailTextLabel?.textColor = UIColor.darkGray
 
         return cell
     }

@@ -15,4 +15,5 @@ class Recipes: NSObject {
     var portions: String?
     var method: String?
     var ingredients: Any?
+    var uid: String?
 }
