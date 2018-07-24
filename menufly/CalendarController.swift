@@ -26,12 +26,17 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var databaseRef = Database.database().reference()
     var listRecipes = [Recipes]()
-    var uidList = [String]()
+    var uidList = [String?]()
     var theIndex = 0
     
     var startDate = Date()
     
     var selectedDate:String!
+//    var selectedDateDate:Date!
+    
+    var allSelectedDates = [String]()
+    
+    var allSelectedDatesRecipes = [Recipes]()
     
     
     let formatter = DateFormatter()
@@ -54,12 +59,15 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
         myCalendar.minimumLineSpacing = 0
         myCalendar.minimumInteritemSpacing = 0
         
+      myCalendar.allowsMultipleSelection = true
+        
         myCalendar.visibleDates {(visibleDates) in
           self.setupViewsFromCalendar(from: visibleDates)
         }
         
-        myCalendar.scrollToDate(startDate, animateScroll: false)
         myCalendar.selectDates( [startDate] )
+        myCalendar.scrollToDate(startDate, animateScroll: false)
+    
         
         
     }
@@ -97,6 +105,7 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
                     
                     self.listRecipes.append(recipe)
                     self.uidList.append(snapshot.key as String)
+                    self.allSelectedDatesRecipes.append(recipe)
                     
                     DispatchQueue.global(qos: .background).async {
                         // Background Thread
@@ -123,15 +132,27 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return allRecipes.count
-        return listRecipes.count
+        if allSelectedDates.count > 1 {
+            return allSelectedDatesRecipes.count
+        } else {
+            if selectedDate == nil {
+                return 0
+            }
+            return listRecipes.count }
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "postCell")
-        //cell?.textLabel?.text = allRecipes[indexPath.row]
-        //return cell!
+      
         let cell = UITableViewCell(style: .default, reuseIdentifier: "calendarRecipecell")
-        cell.textLabel?.text = listRecipes[indexPath.row].name?.uppercased()
+        if allSelectedDates.count > 1 {
+            cell.textLabel?.text = allSelectedDatesRecipes[indexPath.row].name?.uppercased()
+        } else {
+            if selectedDate == nil {
+                return cell
+            } else {
+            cell.textLabel?.text = listRecipes[indexPath.row].name?.uppercased() }
+        }
         cell.textLabel?.textColor = UIColor.darkGray
         return cell
         
@@ -144,18 +165,36 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
             
             formatter.dateFormat = "yyyy MM dd"
             
-            let calendarUserRef = "calendarByUser/\(self.currentUserUid!)/\(self.uidList[indexPath.row])"
-            let calendarRecipeRef = "calendarByRecipe/" + (listRecipes[indexPath.row].uid)! + "/" + (self.currentUserUid! )
             
-            let childUpdates = [ calendarUserRef: NSNull(),
-                                 calendarRecipeRef: NSNull()]
-            print(childUpdates)
+            if allSelectedDates.count > 1 {
+                
+                let calendarUserRef = "calendarByUser/\(self.currentUserUid!)/\(self.allSelectedDatesRecipes[indexPath.row].uid as String!)"
+                let calendarUserDateRef = "calendarByDate/\(self.currentUserUid!)/\(self.selectedDate! as! String)/\(self.allSelectedDatesRecipes[indexPath.row].uid! as! String)"
+                
+                
+                let childUpdates = [ calendarUserRef: NSNull(),
+                                     calendarUserDateRef: NSNull()]
+                
+                allSelectedDatesRecipes.remove(at: indexPath.row)
+                
+                databaseRef.updateChildValues(childUpdates)
+            } else {
+                
+                let calendarUserRef = "calendarByUser/\(self.currentUserUid!)/\(self.listRecipes[indexPath.row].uid as String!)"
+                let calendarUserDateRef = "calendarByDate/\(self.currentUserUid!)/\(self.selectedDate! as! String)/\(self.listRecipes[indexPath.row].uid! as! String)"
+                
+                let childUpdates = [ calendarUserRef: NSNull(),
+                                     calendarUserDateRef: NSNull()]
+                
+                listRecipes.remove(at: indexPath.row)
+                uidList.remove(at: indexPath.row)
+                
+                 databaseRef.updateChildValues(childUpdates)
+            }
             
-            listRecipes.remove(at: indexPath.row)
-            uidList.remove(at: indexPath.row)
+           
             
-            databaseRef.updateChildValues(childUpdates)
-            
+          
             
             recipesTable.reloadData()
         }
@@ -166,6 +205,28 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
       self.performSegue(withIdentifier: "chooseRecipeFromCalendar", sender: self)
         
     }
+    
+    @IBAction func createShoppingList(_ sender: Any) {
+        print(allSelectedDatesRecipes)
+      
+        
+        var shoppingListRecipes = [String]()
+            for recipe in allSelectedDatesRecipes {
+            shoppingListRecipes.append(recipe.uid! as String)
+            }
+        
+        databaseRef.child("byUsersShoppingList").child(currentUserUid!).child("recipes").setValue(shoppingListRecipes)
+        
+        
+        
+        performSegue(withIdentifier: "shoppingList", sender: self)
+        
+    }
+    
+    @IBAction func unwindToCalendar(_ sender: UIStoryboardSegue) {
+        
+    }
+    
     
     
 }
@@ -192,15 +253,7 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
             myCustomCell.selectedView.isHidden = true
             myCustomCell.dayLabel.textColor = UIColor.white
         }
-//        if myCalendar.isDateInToday(date) {
-//            myCustomCell.backgroundColor = red
-//        } else {
-//            myCustomCell.backgroundColor = white
-        
-        // more code configurations
-        // ...
-        // ...
-        // ...
+
     }
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
@@ -223,12 +276,34 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
         
         formatter.dateFormat = "yyyy MM dd"
         
-        selectedDate = formatter.string(from: cellState.date)
+        for date in self.myCalendar.selectedDates {
+            let thisDate = formatter.string(from: date)
+            if !allSelectedDates.contains(thisDate) {
+                allSelectedDates.append(thisDate)}
+        }
         
-        listRecipes = []
-        uidList = []
         
-        fetchRecipes()
+        if allSelectedDates.count > 1 {
+            allSelectedDatesRecipes = []
+            for date in allSelectedDates {
+                selectedDate = date
+                fetchRecipes()
+            }
+        } else  {
+            
+            
+            selectedDate = formatter.string(from: cellState.date)
+//            selectedDateDate = cellState.date
+            
+            listRecipes = []
+            uidList = []
+            
+            fetchRecipes()
+            
+        }
+        
+  
+        
         
         recipesTable.reloadData()
         
@@ -242,6 +317,41 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
         validCell.dayLabel.textColor = UIColor.white
         
         
+        formatter.dateFormat = "yyyy MM dd"
+        
+        let thisDate = formatter.string(from: cellState.date)
+        
+        if let index = allSelectedDates.index(of: thisDate) {
+            allSelectedDates.remove(at: index)
+           
+        }
+        
+        
+            if allSelectedDates.count > 1 {
+                allSelectedDatesRecipes = []
+                for date in allSelectedDates {
+                    selectedDate = date
+                    fetchRecipes()
+                }
+            } else  {
+                    if allSelectedDates.count == 0 {
+                        allSelectedDatesRecipes = []
+                        selectedDate = nil
+                        listRecipes = []
+                        
+                        recipesTable.reloadData()
+                        
+                    } else {
+                   
+                    selectedDate = formatter.string(from: cellState.date)
+                    
+                    listRecipes = []
+                    uidList = []
+                    
+                    fetchRecipes()
+                    
+                }
+            }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
@@ -266,6 +376,13 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
             myRecipesController.userName = "My recipes"
             myRecipesController.selectedDate = self.selectedDate
         }
+//    if segue.identifier == "shoppingList" {
+//        let myShoppingListController = segue.destination as! ShoppingListViewController
+//        myShoppingListController.recipes = self.allSelectedDatesRecipes
+//    }
+    }
+    
+    @IBAction func unwindToFriends(_ sender: UIStoryboardSegue) {
     }
     
 }

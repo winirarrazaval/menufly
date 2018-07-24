@@ -10,6 +10,7 @@
 		978C2AC1F16916C109A1B665 /* Pods_menufly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00339691A7C4847B90E9A00A /* Pods_menufly.framework */; };
 		9F08560B20F6B70B009F4FD5 /* AllTheRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */; };
 		9F08561120F6DA43009F4FD5 /* CreateRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */; };
+		9F135A1B2102A993000AEB6E /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F135A1A2102A993000AEB6E /* ShoppingListViewController.swift */; };
 		9F18CC7920EC87E40062EA36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7820EC87E40062EA36 /* AppDelegate.swift */; };
 		9F18CC7B20EC87E40062EA36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F18CC7A20EC87E40062EA36 /* ViewController.swift */; };
 		9F18CC7E20EC87E40062EA36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F18CC7C20EC87E40062EA36 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		5F96175EDF4CB1C066E16D5D /* Pods-menufly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-menufly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-menufly/Pods-menufly.debug.xcconfig"; sourceTree = "<group>"; };
 		9F08560A20F6B70B009F4FD5 /* AllTheRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTheRecipesViewController.swift; sourceTree = "<group>"; };
 		9F08561020F6DA43009F4FD5 /* CreateRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeViewController.swift; sourceTree = "<group>"; };
+		9F135A1A2102A993000AEB6E /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		9F18CC7520EC87E40062EA36 /* menufly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = menufly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F18CC7820EC87E40062EA36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F18CC7A20EC87E40062EA36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				9F5CE48E20FFD06A00F09C15 /* CalendarController.swift */,
 				9F5CE490210016B700F09C15 /* CalendarHeader.swift */,
 				9F5CE49721011BBB00F09C15 /* AddToCalendarController.swift */,
+				9F135A1A2102A993000AEB6E /* ShoppingListViewController.swift */,
 			);
 			path = menufly;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
@@ -278,6 +282,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
@@ -330,6 +335,7 @@
 				9F5CE49821011BBB00F09C15 /* AddToCalendarController.swift in Sources */,
 				9F18CC7920EC87E40062EA36 /* AppDelegate.swift in Sources */,
 				9F448B1720F81C6E00E9CA90 /* UserProfileViewController.swift in Sources */,
+				9F135A1B2102A993000AEB6E /* ShoppingListViewController.swift in Sources */,
 				9F5CE48D20FFCF2000F09C15 /* CalendarCell.swift in Sources */,
 				9F448B1320F7EB8100E9CA90 /* MyFriendsTableViewController.swift in Sources */,
 				9F5CE491210016B700F09C15 /* CalendarHeader.swift in Sources */,

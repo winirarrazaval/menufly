@@ -10,6 +10,7 @@ pod 'Firebase/Auth'
 pod 'FirebaseUI'
 pod 'FirebaseUI/Google'
 pod 'GoogleSignIn'
+pod 'RxSwift'
 pod "JTAppleCalendar"
   # Pods for menufly
 

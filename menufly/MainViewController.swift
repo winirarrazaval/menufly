@@ -49,6 +49,10 @@ class MainViewController: UIViewController {
             myRecipesController.userName = "My recipes"
             
         }
+//        if segue.identifier == "toCalendar" {
+//            let myCalendarController = segue.destination as! CalendarController
+//            myCalendarController.selectedDateDate = Date()
+//        }
     }
     
 

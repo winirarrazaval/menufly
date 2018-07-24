@@ -52,8 +52,6 @@ class AddToCalendarController: UIViewController {
         let calendarUserRef = "calendarByUser/\(self.loggedInUser!.uid )/\(self.recipeUid)"
         let calendarUserDateRef = "calendarByDate/" + (self.loggedInUser!.uid) + "/" + (self.selectedDate) + "/" +  (self.recipeUid)
         
-        print(self.recipeIngredients)
-        
         
         let calendarUserData = [ "date": selectedDate ,
                                   "recipeName": self.recipeName,
@@ -65,16 +63,7 @@ class AddToCalendarController: UIViewController {
                                  calendarUserDateRef: calendarByDateData]
             
             ref.updateChildValues(childUpdates)
-        
-         func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "showCalendar" {
-                let calendarController = segue.destination as! CalendarController
-                let formatter = DateFormatter()
-                calendarController.startDate = formatter.date(from: self.selectedDate)!
-            }
-        }
-        
-        performSegue(withIdentifier: "showCalendar", sender: self)
+    
         
     }
     

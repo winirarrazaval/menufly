@@ -58,7 +58,7 @@ class AllTheRecipesViewController: UIViewController, UITableViewDelegate, UITabl
                         let recipe = Recipes()
                         recipe.uid = snapshot.key as String
                         recipe.name = snapshot.childSnapshot(forPath: "name").value as? String
-                        recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any
+                        recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any as? [Any]
                         recipe.method = snapshot.childSnapshot(forPath: "method").value as? String
                         recipe.portions = snapshot.childSnapshot(forPath: "portions").value as? String
                         theRecipes.append(recipe)
