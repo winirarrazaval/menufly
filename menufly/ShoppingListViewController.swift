@@ -128,9 +128,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").setValue(shoppingListIngredients)
         
         retrieveIngredientsShoppingList()
-        print("array of uids : \(ingredientsListToShowuid)")
-        
-    }
+        }
     
     func retrieveIngredientsShoppingList(){
         ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
@@ -138,19 +136,21 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             print("this is and ingredient in shopping list :\(snapshot)")
             
             let snapshotUid = snapshot.key
-            let snapshot = snapshot.value as? NSDictionary
+            let snapshot = snapshot.value as? NSMutableDictionary
+            snapshot!["uid"] = snapshotUid
             
             let name = snapshot!["name"] as! String
             let quantity = snapshot!["quantity"] as! String
             
             if !self.ingredientsListToShowuid.contains(snapshotUid){
-                self.ingredientsListToShow.value.append((snapshot)! as! NSMutableDictionary)
+                self.ingredientsListToShow.value.append((snapshot)! )
             self.ingredientsListToShowuid.append(snapshotUid)
             } else {
                 let index =  self.ingredientsListToShow.value.index(where: {$0["name"] as! String == name})
                 self.ingredientsListToShow.value[index!]["quantity"] = quantity
             }
             print("the one and only ingredients array: \(self.ingredientsListToShow.value)")
+            self.shoppingList.reloadData()
 //
 //            self.followingTableView.insertRows(at: [IndexPath(row:self.listFollowing.count-1,section:0)], with: UITableViewRowAnimation.automatic)
 //
@@ -161,25 +161,40 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(shoppingListIngredients.count)
-            return shoppingListIngredients.count
+     
+            return ingredientsListToShow.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           print("my shopping list \(shoppingListIngredients)")
+           print("my shopping list \(ingredientsListToShow.value)")
          let cell =  shoppingList.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as! ShoppingListCell
-            cell.ingredientName?.text = (shoppingListIngredients[indexPath.row]["name"] as! String).uppercased()
+            cell.ingredientName?.text = (ingredientsListToShow.value[indexPath.row]["name"] as! String).uppercased()
             cell.ingredientName?.textColor = UIColor.darkGray
-        let thisQuantity = String(shoppingListIngredients[indexPath.row]["quantity"] as! String)
-            cell.quantity?.text = "\(thisQuantity.uppercased()) \((shoppingListIngredients[indexPath.row]["measurement"] as! String).uppercased())"
+        let thisQuantity = String(ingredientsListToShow.value[indexPath.row]["quantity"] as! String)
+            cell.quantity?.text = "\(thisQuantity.uppercased()) \((ingredientsListToShow.value[indexPath.row]["measurement"] as! String).uppercased())"
             cell.quantity?.textColor = UIColor.darkGray
             return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ingredientsListToShow.value.remove(at: indexPath.item)
+            shoppingList.deleteRows(at: [indexPath], with: .automatic)
+            ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").child((ingredientsListToShow.value[indexPath.row - 1]["uid"] as! String?)!).setValue(NSNull())
+        }
+    }
+    
+ 
+    @IBAction func editShoppingList(_ sender: Any) {
+        self.shoppingList.isEditing = !self.shoppingList.isEditing
+        navigationItem.title = (self.shoppingList.isEditing) ? "Editing" : "Shopping List"
+        
+    }
+    
+    
     @IBAction func deleteShoppingList(_ sender: Any) {
         let shoppingListReference = "byUsersShoppingList/\((Auth.auth().currentUser?.uid)!)"
         let childUpdates = [shoppingListReference: NSNull()]
-        print(shoppingListReference)
         ref.updateChildValues(childUpdates)
         self.navigationController?.popViewController(animated: true)
     }

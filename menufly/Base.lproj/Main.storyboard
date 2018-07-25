@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -992,12 +993,20 @@
                         <viewLayoutGuide key="safeArea" id="Dsm-U1-8xq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Shopping List" id="hXD-ma-bRu">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="1mZ-3C-1Lz">
-                            <color key="tintColor" red="0.37092424229999998" green="0.4647446066" blue="0.41931271419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="deleteShoppingList:" destination="vSZ-Qa-rOi" id="gPJ-Y0-eQb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="1mZ-3C-1Lz">
+                                <color key="tintColor" red="0.37092424229999998" green="0.4647446066" blue="0.41931271419999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="deleteShoppingList:" destination="vSZ-Qa-rOi" id="gPJ-Y0-eQb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="ba7-3K-C4b">
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="editShoppingList:" destination="vSZ-Qa-rOi" id="3gP-c1-VP9"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="shoppingList" destination="bSn-HF-XxF" id="uLD-Us-PSd"/>
