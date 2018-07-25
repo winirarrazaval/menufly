@@ -234,9 +234,14 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
             shoppingListRecipes.append(recipe.uid! as String)
             }
         
+        let shoppingListReference = "byUsersShoppingList/\((Auth.auth().currentUser?.uid)!)"
+        let childUpdates = [shoppingListReference: NSNull()]
+        databaseRef.updateChildValues(childUpdates)
+        
         databaseRef.child("byUsersShoppingList").child(currentUserUid!).child("recipes").setValue(shoppingListRecipes)
         
         
+     
         
         performSegue(withIdentifier: "shoppingList", sender: self)
         

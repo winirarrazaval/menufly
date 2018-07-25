@@ -38,15 +38,28 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
+        ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+         
+            if snapshot.hasChild("ingredientsShoppingList"){
+             
+                self.retrieveIngredientsShoppingList()
+                
+            }else{
+            
+                self.fetchData()
+                self.ingredientsArray.asObservable().subscribe(onNext: { ingredient in
+                    
+                self.checkForEquals()
+                self.shoppingList.reloadData()
+                }).disposed(by: self.disposeBag)
+                
 
-        self.ingredientsArray.asObservable().subscribe(onNext: { ingredient in
-          
-            self.checkForEquals()
-            self.shoppingList.reloadData()
-        }).disposed(by: disposeBag)
+            }
+            
+            
+        })
         
-     
+
         
         shoppingList.dataSource = self
         shoppingList.delegate = self
@@ -58,7 +71,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func fetchData(){
-        print("Begin fetchData")
+       
         self.ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("recipes").observe(.childAdded, with: { (snapshot) in
             print("Inside callback for fetchData")
                 let uidString = "\(snapshot.value!)"
@@ -67,13 +80,13 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 self.getIngredients(recipeUid: uidString)
             }
         )
-        print("End fetchData")
+
     }
     
     func getIngredients(recipeUid: String){
-        print("Begin getIngredients")
+   
         self.ref.child("recipes").child(recipeUid).observe(.childAdded, with: { (othersnapshot) in
-            print("Inside callback for getIngredients")
+      
      
             let oneRecipeIngredients:NSArray = othersnapshot.children.allObjects as NSArray
             for ingre in oneRecipeIngredients {
@@ -86,11 +99,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
         })
-        print("End getIngredients")
+    
     }
     
     func checkForEquals(){
-        print("Begin checkForEquals")
+    
        
         for ingredient in ingredientsArray.value {
           let firstFilterIngredientArray = ingredientsArray.value.filter{ $0["name"] as! String == ingredient["name"] as! String}
@@ -101,11 +114,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 let number = one["quantity"]
                 counter += Int(number as! String)!
             }
-            print ("this is counter \(counter)")
+         
             let shoppingIngredient:NSMutableDictionary = ["name" : ingredient["name"] as! String,
-                                      "quantity" : String(counter),
-                                      "measurement" : ingredient["measurement"] as! String]
-            print(shoppingIngredient)
+                                                          "quantity" : String(counter),
+                                                          "measurement" : ingredient["measurement"] as! String]
+            
         
             let name:String = ingredient["name"] as! String
             let measurement:String = ingredient["measurement"] as! String
@@ -132,8 +145,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func retrieveIngredientsShoppingList(){
         ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
-            print("data returnd")
-            print("this is and ingredient in shopping list :\(snapshot)")
+         
             
             let snapshotUid = snapshot.key
             let snapshot = snapshot.value as? NSMutableDictionary
@@ -142,14 +154,19 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             let name = snapshot!["name"] as! String
             let quantity = snapshot!["quantity"] as! String
             
-            if !self.ingredientsListToShowuid.contains(snapshotUid){
-                self.ingredientsListToShow.value.append((snapshot)! )
-            self.ingredientsListToShowuid.append(snapshotUid)
+            if self.ingredientsListToShowuid.count == 0 {
+                self.ingredientsListToShow.value.append((snapshot!))
+                self.ingredientsListToShowuid.append(snapshotUid)
             } else {
-                let index =  self.ingredientsListToShow.value.index(where: {$0["name"] as! String == name})
-                self.ingredientsListToShow.value[index!]["quantity"] = quantity
+                if !self.ingredientsListToShowuid.contains(snapshotUid){
+                    self.ingredientsListToShow.value.append((snapshot)! )
+                self.ingredientsListToShowuid.append(snapshotUid)
+                } else {
+                    let index =  self.ingredientsListToShow.value.index(where: {$0["name"] as! String == name})
+                    self.ingredientsListToShow.value[index!]["quantity"]? = quantity
+                }
             }
-            print("the one and only ingredients array: \(self.ingredientsListToShow.value)")
+           
             self.shoppingList.reloadData()
 //
 //            self.followingTableView.insertRows(at: [IndexPath(row:self.listFollowing.count-1,section:0)], with: UITableViewRowAnimation.automatic)
@@ -166,7 +183,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           print("my shopping list \(ingredientsListToShow.value)")
+        
          let cell =  shoppingList.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as! ShoppingListCell
             cell.ingredientName?.text = (ingredientsListToShow.value[indexPath.row]["name"] as! String).uppercased()
             cell.ingredientName?.textColor = UIColor.darkGray
@@ -178,9 +195,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            let uid = ingredientsListToShow.value[indexPath.row]["uid"]
             ingredientsListToShow.value.remove(at: indexPath.item)
             shoppingList.deleteRows(at: [indexPath], with: .automatic)
-            ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").child((ingredientsListToShow.value[indexPath.row - 1]["uid"] as! String?)!).setValue(NSNull())
+            ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").child((uid as! String?)!).setValue(NSNull())
         }
     }
     
