@@ -45,6 +45,7 @@ class OneRecipeViewController: UIViewController {
             addToCalendarController.recipeName = theRecipes[myIndex].name
             addToCalendarController.recipeIngredients = theRecipes[myIndex].ingredients
             addToCalendarController.selectedDate = self.selectedDate
+            addToCalendarController.portions = theRecipes[myIndex].portions
     }
     
     }

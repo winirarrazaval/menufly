@@ -11,7 +11,7 @@ import JTAppleCalendar
 import Firebase
 import FirebaseDatabase
 
-class CalendarController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class CalendarController: UIViewController, UITableViewDataSource, UITableViewDelegate {
  
     
     @IBOutlet weak var myCalendar: JTAppleCalendarView!
@@ -20,6 +20,9 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     @IBOutlet weak var recipesTable: UITableView!
+    
+    
+    
     
     
     let currentUserUid = Auth.auth().currentUser?.uid
@@ -96,12 +99,13 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
                 //   let recipeUserUid = snapshot.childSnapshot(forPath: "userUID").value
                 //    if  (self.userUid?.isEqual(recipeUserUid))! {
                 if  ((snapshot.value as? [String: AnyObject]) != nil){
+                 
                     let recipe = Recipes()
                     recipe.uid = snapshot.key as String
                     recipe.name = snapshot.childSnapshot(forPath: "recipeName").value as? String
                     //recipe.ingredients = snapshot.childSnapshot(forPath: "ingredients").value as Any
                     //recipe.method = snapshot.childSnapshot(forPath: "method").value as? String
-                    //recipe.portions = snapshot.childSnapshot(forPath: "portions").value as? String
+                    recipe.portions = snapshot.childSnapshot(forPath: "portions").value as? String
                     
                     self.listRecipes.append(recipe)
                     self.uidList.append(snapshot.key as String)
@@ -144,16 +148,31 @@ class CalendarController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "calendarRecipecell")
+        let cell =  self.recipesTable.dequeueReusableCell(withIdentifier: "caledarRecipecell", for: indexPath) as! RecipeCalendarCell
         if allSelectedDates.count > 1 {
-            cell.textLabel?.text = allSelectedDatesRecipes[indexPath.row].name?.uppercased()
-        } else {
+         
+            cell.recipeName.text = allSelectedDatesRecipes[indexPath.row].name?.uppercased()
+            let portions = allSelectedDatesRecipes[indexPath.row].portions
+            if portions != nil {
+                cell.recipePortions.text = ("\( allSelectedDatesRecipes[indexPath.row].portions!.uppercased()) people ")
+            } else {
+                    cell.recipePortions.text = ""
+                }
+        }
+         else {
             if selectedDate == nil {
                 return cell
             } else {
-            cell.textLabel?.text = listRecipes[indexPath.row].name?.uppercased() }
+             
+            cell.recipeName.text = listRecipes[indexPath.row].name?.uppercased() }
+            let portions = listRecipes[indexPath.row].portions
+            if portions != nil {
+                cell.recipePortions.text = ("\( listRecipes[indexPath.row].portions!.uppercased()) people ")
+            } else {
+                cell.recipePortions.text = ""
+            }
         }
-        cell.textLabel?.textColor = UIColor.darkGray
+        cell.recipeName.textColor = UIColor.darkGray
         return cell
         
         

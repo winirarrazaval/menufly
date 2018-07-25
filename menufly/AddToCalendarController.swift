@@ -16,6 +16,7 @@ class AddToCalendarController: UIViewController {
     var recipeName: String!
     var recipeIngredients: Any!
     var selectedDate:String!
+    var portions:String!
 
     @IBOutlet weak var recipe: UILabel!
     
@@ -55,12 +56,14 @@ class AddToCalendarController: UIViewController {
         
         let calendarUserData = [ "date": selectedDate ,
                                   "recipeName": self.recipeName,
-                                  "ingredients" : self.recipeIngredients]
+                                  "ingredients" : self.recipeIngredients,
+                                  "portions" : self.portions]
         let calendarByDateData = [ "recipeName": self.recipeName ,
                                   "recipeUid": self.recipeUid,
-                                  "ingredients": self.recipeIngredients]
+                                  "ingredients": self.recipeIngredients,
+                                  "portions": self.portions]
         let childUpdates = [ calendarUserRef: calendarUserData as Any,
-                                 calendarUserDateRef: calendarByDateData]
+                             calendarUserDateRef: calendarByDateData]
             
             ref.updateChildValues(childUpdates)
     
