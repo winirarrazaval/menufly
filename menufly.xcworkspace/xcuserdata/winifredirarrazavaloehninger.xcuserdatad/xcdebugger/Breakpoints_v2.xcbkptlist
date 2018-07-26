@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/AllRecipesViewController.swift"
+            timestampString = "553041374.33786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "AllRecipesViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.AllRecipesViewController.__deallocating_deinit"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/AllRecipesViewController.swift"
+                  timestampString = "553019058.813049"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.AllRecipesViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; menufly.AllRecipesViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/AllRecipesViewController.swift"
+                  timestampString = "553019058.816623"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.AllRecipesViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; menufly.AllRecipesViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/AllRecipesViewController.swift"
+                  timestampString = "553019058.820034"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "73">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.AllRecipesViewController.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;menufly.AllRecipesViewController&gt;"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/AllRecipesViewController.swift"
+                  timestampString = "553019058.823512"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.AllRecipesViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;menufly.AllRecipesViewController&gt;"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/AllRecipesViewController.swift"
+                  timestampString = "553019058.826781"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/NewRecipeViewController.swift"
+            timestampString = "554267145.137422"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/CreateNewRecipeViewController.swift"
+            timestampString = "553047579.047217"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "CreateNewRecipeViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/FollowUsersTableViewController.swift"
+            timestampString = "553763394.203607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.FollowUsersTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/FollowUsersTableViewController.swift"
+                  timestampString = "553116277.62006"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "1466">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.DataSnapshot) -&gt; () in menufly.FollowUsersTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/FollowUsersTableViewController.swift"
+                  timestampString = "553116277.624653"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "530">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Error) -&gt; () in menufly.FollowUsersTableViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/FollowUsersTableViewController.swift"
+                  timestampString = "553116277.6292059"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/MyFriendsTableViewController.swift"
+            timestampString = "554265227.993911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "MyFriendsTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.__deallocating_deinit"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.248005"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.__allocating_init(style: __C.UITableViewStyle) -&gt; menufly.MyFriendsTableViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.251807"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.init(style: __C.UITableViewStyle) -&gt; menufly.MyFriendsTableViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.255481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; menufly.MyFriendsTableViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.258824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; menufly.MyFriendsTableViewController"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.262234"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;menufly.MyFriendsTableViewController&gt;"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.265566"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "menufly.MyFriendsTableViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;menufly.MyFriendsTableViewController&gt;"
+                  moduleName = "menufly"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/winifredirarrazavaloehninger/Desktop/Capstone/menufly/menufly/MyFriendsTableViewController.swift"
+                  timestampString = "553155837.26965"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/CalendarController.swift"
+            timestampString = "554320389.251133"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.251358"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "checkForEquals()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.251442"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "checkForEquals()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.251509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "checkForEquals()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.25157"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "checkForEquals()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.25164"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "menufly/ShoppingListViewController.swift"
+            timestampString = "554320389.251708"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

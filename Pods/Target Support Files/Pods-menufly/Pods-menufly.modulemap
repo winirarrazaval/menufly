@@ -1,0 +1,6 @@
+framework module Pods_menufly {
+  umbrella header "Pods-menufly-umbrella.h"
+
+  export *
+  module * { export * }
+}
