@@ -376,6 +376,7 @@ extension CalendarController: JTAppleCalendarViewDelegate, JTAppleCalendarViewDa
                     
                 }
             }
+         recipesTable.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {

@@ -8,7 +8,8 @@
 
 import UIKit
 
-class OneRecipeViewController: UIViewController {
+class OneRecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+   
     @IBOutlet weak var recipeName: UILabel!
     
     @IBOutlet weak var recipePortions: UILabel!
@@ -16,6 +17,8 @@ class OneRecipeViewController: UIViewController {
     @IBOutlet weak var ingredientsTable: UITableView!
     
     @IBOutlet weak var recipePreparation: UITextView!
+    
+     let ingredients = theRecipes[myIndex].ingredients
     
     var selectedDate:String!
     
@@ -27,10 +30,13 @@ class OneRecipeViewController: UIViewController {
         recipeName.text = myRecipe.name?.uppercased()
     
         recipePortions.text = myRecipe.portions! + " persons"
-        
+  
         recipePreparation.text = myRecipe.method
+        
+        ingredientsTable.delegate = self
+        ingredientsTable.dataSource = self
+        
 
-       
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,14 +55,20 @@ class OneRecipeViewController: UIViewController {
     }
     
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        return ingredients!.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ingredientsTable.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath)
+        let ingredient = ingredients![indexPath.row] as! NSDictionary
+        cell.textLabel?.text = ("- \(ingredient["quantity"] as! String) \(ingredient["measurement"] as! String) of \(ingredient["name"] as! String) ")
+        cell.textLabel?.textColor = UIColor.darkGray
+        return cell
+    }
+    
+
 
 }

@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+ 
    
     
    
@@ -26,7 +27,7 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
     
     @IBOutlet weak var recipePortion: UITextField!
     
-    @IBOutlet weak var recipeMethod: UITextField!
+    @IBOutlet weak var recipeMethod: UITextView!
     
     @IBOutlet weak var recipeIngredient: UITextField!
     
@@ -37,15 +38,17 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
    
     @IBOutlet weak var ingredientsTable: UITableView!
     
+    var selectedDate = Date()
     
-    var ingredientsList = [String] ()
+    
+    var ingredientsList = [String]()
     
     var theIngredientName:String = ""
     var theIngredientQuantity:String = ""
     var theIngredientMeasurement:String = ""
     
     
-    var measurementArray = ["grms", "kg", "ml", "spoon", "tablespoon", "pinch", "cups", "liter", "pounds", "oz", "gallon", "quater"]
+    var measurementArray = ["","grms", "kg", "ml","liter", "teasspoon", "tablespoon", "pinch", "unit", "cups",  "pounds", "oz", "gallon", "quater"]
     
     var chosenMeasure = 0
     
@@ -55,13 +58,11 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default
-            , reuseIdentifier: "ingredientCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipeBuildingCell", for: indexPath)
         cell.textLabel?.text = ingredientsList[indexPath.row]
-        
         return cell
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -90,8 +91,13 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
         createToolBar()
         
         ingredientsTable.layer.masksToBounds = true
-        ingredientsTable.layer.borderColor =  UIColor( red: 153/255, green: 153/255, blue:0/255, alpha: 1.0 ).cgColor
-        ingredientsTable.layer.borderWidth = 2.0
+    
+        
+        recipeMethod!.layer.borderWidth = 1
+        recipeMethod!.layer.borderColor = UIColor.lightGray.cgColor
+        
+        ingredientsTable!.layer.borderWidth = 1
+        ingredientsTable!.layer.borderColor = UIColor.lightGray.cgColor
         
         
 
@@ -141,7 +147,7 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
         theIngredientQuantity = recipeIngredientQuantity.text!
         theIngredientMeasurement = recipeIngredientMeasurment.text!
         
-        ingredientsList.append(theIngredientQuantity + " " + theIngredientMeasurement + " " + theIngredientName)
+        ingredientsList.append("\(theIngredientQuantity) \(theIngredientMeasurement) of \(theIngredientName)")
         print(ingredientsList)
         ingredients.append(ingredient as AnyObject)
         ingredientsTable.reloadData()
@@ -166,18 +172,9 @@ class CreateRecipeViewController: UIViewController, UIPickerViewDataSource, UIPi
         //presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    
+    
  
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

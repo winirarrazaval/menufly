@@ -110,9 +110,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             let ingredientArray = firstFilterIngredientArray.filter{ $0["measurement"] as! String == ingredient["measurement"] as! String}
             var counter = 0
             for one in ingredientArray {
-          
-                let number = one["quantity"]
-                counter += Int(number as! String)!
+                var number = "0"
+                if ((one["quantity"] as! String) != "") {
+                   number = one["quantity"] as! String
+                }
+                counter += Int(number )!
             }
          
             let shoppingIngredient:NSMutableDictionary = ["name" : ingredient["name"] as! String,
@@ -202,13 +204,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
- 
-    @IBAction func editShoppingList(_ sender: Any) {
-        self.shoppingList.isEditing = !self.shoppingList.isEditing
-        navigationItem.title = (self.shoppingList.isEditing) ? "Editing" : "Shopping List"
-        
-    }
-    
+
     
     @IBAction func deleteShoppingList(_ sender: Any) {
         let shoppingListReference = "byUsersShoppingList/\((Auth.auth().currentUser?.uid)!)"
@@ -216,5 +212,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         ref.updateChildValues(childUpdates)
         self.navigationController?.popViewController(animated: true)
     }
+    
+
     
 }
