@@ -113,10 +113,10 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 var number = "0"
                 if ((one["quantity"] as! String) != "") {
                    number = one["quantity"] as! String
-                }
+             
                 counter += Int(number )!
+                }
             }
-         
             let shoppingIngredient:NSMutableDictionary = ["name" : ingredient["name"] as! String,
                                                           "quantity" : String(counter),
                                                           "measurement" : ingredient["measurement"] as! String]
@@ -130,8 +130,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 print("the last \(shoppingListIngredients)")
                 shoppingList.reloadData()
             } else {
-               let index =  shoppingListIngredients.index(where: {$0["name"] as! String == name})
+               let index =  shoppingListIngredients.index(where: {$0["name"] as! String == name && $0["measurement"] as! String == measurement})
                 shoppingListIngredients[index!]["quantity"] = String(counter )
+        
             }
             
         }
@@ -146,6 +147,9 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         }
     
     func retrieveIngredientsShoppingList(){
+        
+            ingredientsListToShow.value = []
+            ingredientsListToShowuid = []
         ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").queryOrdered(byChild: "name").observe(.childAdded, with: { (snapshot) in
          
             
@@ -154,19 +158,25 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             snapshot!["uid"] = snapshotUid
             
             let name = snapshot!["name"] as! String
-            let quantity = snapshot!["quantity"] as! String
+            var quantity = snapshot!["quantity"] as! String
+            if (snapshot!["quantity"]  == nil) {
+                 quantity = ""
+            }
             
-            if self.ingredientsListToShowuid.count == 0 {
+            if self.ingredientsListToShow.value.count == 0 {
                 self.ingredientsListToShow.value.append((snapshot!))
                 self.ingredientsListToShowuid.append(snapshotUid)
             } else {
                 if !self.ingredientsListToShowuid.contains(snapshotUid){
                     self.ingredientsListToShow.value.append((snapshot)! )
-                self.ingredientsListToShowuid.append(snapshotUid)
+                    self.ingredientsListToShowuid.append(snapshotUid)
                 } else {
+
                     let index =  self.ingredientsListToShow.value.index(where: {$0["name"] as! String == name})
                     self.ingredientsListToShow.value[index!]["quantity"]? = quantity
-                }
+
+             }
+                    
             }
            
             self.shoppingList.reloadData()
@@ -195,12 +205,33 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ShoppingListCell
+        if cell.quantity?.text == "Have it!" {
+            let thisQuantity = String(ingredientsListToShow.value[indexPath.row]["quantity"] as! String)
+                cell.quantity?.text = "\(thisQuantity.uppercased()) \((ingredientsListToShow.value[indexPath.row]["measurement"] as! String).uppercased())"
+                cell.quantity?.textColor = UIColor.darkGray
+        } else {
+            cell.quantity?.text = "Have it!"
+            cell.quantity?.textColor = UIColor.red
+        }
+    }
+    
+
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let uid = ingredientsListToShow.value[indexPath.row]["uid"]
             ingredientsListToShow.value.remove(at: indexPath.item)
             shoppingList.deleteRows(at: [indexPath], with: .automatic)
             ref.child("byUsersShoppingList").child((Auth.auth().currentUser?.uid)!).child("ingredientsShoppingList").child((uid as! String?)!).setValue(NSNull())
+            
+        }
+        if self.ingredientsListToShow.value.count == 0 {
+            let shoppingListReference = "byUsersShoppingList/\((Auth.auth().currentUser?.uid)!)"
+            let childUpdates = [shoppingListReference: NSNull()]
+            ref.updateChildValues(childUpdates)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
